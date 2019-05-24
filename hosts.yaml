@@ -1,0 +1,22 @@
+---
+csr15:
+   hostname: csr15
+   platform: ios
+   username: cisco
+   password: cisco
+xrv7:
+   hostname: xrv7
+   platform: iosxr
+   username: cisco
+   password: cisco
+xrv8:
+   hostname: xrv8
+   platform: iosxr
+   username: cisco
+   password: cisco
+vmx1:
+   hostname: vmx1
+   platform: junos
+   username: juniper
+   password: Juniper
+
