@@ -7,8 +7,6 @@ from flask_wtf import FlaskForm
 from flask import render_template
 from flask import request
 from flask_bootstrap import Bootstrap
-from wtforms import StringField
-from wtforms.validators import InputRequired
 from nornir import InitNornir
 from nornir.plugins.tasks.networking import napalm_get
 from nornir.plugins.tasks.networking import napalm_cli
@@ -23,16 +21,14 @@ app.config['SECRET_KEY'] = '443436456542'
 Bootstrap(app)
   
 def initCheck():
-  ge_pattern1 = re.compile("^GigabitEthernet[0-9]/[0-9]/[0-9]/[0-9]$")
-  ge_pattern2 = re.compile("^ge-[0-9]/[0-9]/[0-9]$")
-  ge_pattern3 = re.compile("^GigabitEthernet[0-9]$")
   result = {}
   basic_facts = nr.run(name="Get interfaces", task=napalm_get, getters=["interfaces"])
   for k,v in basic_facts.items():
      d = {}
      d['gig_up'] = 0
      d['gig_down'] = 0
-     print(k)
+     d['tengig_up'] = 0
+     d['tengig_down'] = 0
      for iface, b in v[0].result['interfaces'].items():
        if re.match(r"^GigabitEthernet[0-9]/[0-9]/[0-9]/[0-9]$", iface) or re.match(r"^ge-[0-9]/[0-9]/[0-9]$", iface) or re.match("^GigabitEthernet[0-9]$", iface):
          if(b['is_enabled']):

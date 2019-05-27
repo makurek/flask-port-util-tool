@@ -5098,3 +5098,119 @@ AttributeError: 'UnestablishedConnection' object has no attribute 'get_interface
 2019-05-24 13:22:23,255 - nornir.core.task -     INFO -      start() - xrv7: Get interfaces: running task
 2019-05-24 13:22:23,255 - nornir.core.task -     INFO -      start() - xrv7: Get interfaces: running task
 2019-05-24 13:22:28,190 -     werkzeug -     INFO -       _log() - 192.168.194.37 - - [24/May/2019 13:22:28] "GET / HTTP/1.1" 200 -
+2019-05-24 13:59:28,025 -  nornir.core -     INFO -        run() - Running task 'Get interfaces' with num_workers: 100
+2019-05-24 13:59:28,025 -  nornir.core -     INFO -        run() - Running task 'Get interfaces' with num_workers: 100
+2019-05-24 13:59:28,025 -  nornir.core -    DEBUG -        run() - {'name': 'Get interfaces', 'getters': ['interfaces']}
+2019-05-24 13:59:28,025 -  nornir.core -    DEBUG -        run() - {'name': 'Get interfaces', 'getters': ['interfaces']}
+2019-05-24 13:59:28,048 - nornir.core.task -     INFO -      start() - csr15: Get interfaces: running task
+2019-05-24 13:59:28,048 - nornir.core.task -     INFO -      start() - csr15: Get interfaces: running task
+2019-05-24 13:59:28,049 - nornir.core.task -     INFO -      start() - xrv7: Get interfaces: running task
+2019-05-24 13:59:28,049 - nornir.core.task -     INFO -      start() - xrv8: Get interfaces: running task
+2019-05-24 13:59:28,049 - nornir.core.task -     INFO -      start() - xrv8: Get interfaces: running task
+2019-05-24 13:59:28,051 - nornir.core.task -    ERROR -      start() - csr15: Traceback (most recent call last):
+  File "/home/marcin/.local/lib/python3.6/site-packages/napalm/ios/ios.py", line 165, in _send_command
+    output = self.device.send_command(command)
+  File "/home/marcin/.local/lib/python3.6/site-packages/netmiko/base_connection.py", line 1139, in send_command
+    prompt = self.find_prompt(delay_factor=delay_factor)
+  File "/home/marcin/.local/lib/python3.6/site-packages/netmiko/base_connection.py", line 972, in find_prompt
+    self.write_channel(self.RETURN)
+  File "/home/marcin/.local/lib/python3.6/site-packages/netmiko/base_connection.py", line 360, in write_channel
+    self._write_channel(out_data)
+  File "/home/marcin/.local/lib/python3.6/site-packages/netmiko/base_connection.py", line 331, in _write_channel
+    self.remote_conn.sendall(write_bytes(out_data, encoding=self.encoding))
+  File "/home/marcin/.local/lib/python3.6/site-packages/paramiko/channel.py", line 846, in sendall
+    sent = self.send(s)
+  File "/home/marcin/.local/lib/python3.6/site-packages/paramiko/channel.py", line 801, in send
+    return self._send(s, m)
+  File "/home/marcin/.local/lib/python3.6/site-packages/paramiko/channel.py", line 1180, in _send
+    raise socket.error("Socket is closed")
+OSError: Socket is closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/marcin/.local/lib/python3.6/site-packages/nornir/core/task.py", line 62, in start
+    r = self.task(self, **self.params)
+  File "/home/marcin/.local/lib/python3.6/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/marcin/.local/lib/python3.6/site-packages/napalm/ios/ios.py", line 904, in get_interfaces
+    output = self._send_command(command)
+  File "/home/marcin/.local/lib/python3.6/site-packages/napalm/ios/ios.py", line 168, in _send_command
+    raise ConnectionClosedException(str(e))
+napalm.base.exceptions.ConnectionClosedException: Socket is closed
+
+2019-05-24 13:59:28,051 - nornir.core.task -    ERROR -      start() - csr15: Traceback (most recent call last):
+  File "/home/marcin/.local/lib/python3.6/site-packages/napalm/ios/ios.py", line 165, in _send_command
+    output = self.device.send_command(command)
+  File "/home/marcin/.local/lib/python3.6/site-packages/netmiko/base_connection.py", line 1139, in send_command
+    prompt = self.find_prompt(delay_factor=delay_factor)
+  File "/home/marcin/.local/lib/python3.6/site-packages/netmiko/base_connection.py", line 972, in find_prompt
+    self.write_channel(self.RETURN)
+  File "/home/marcin/.local/lib/python3.6/site-packages/netmiko/base_connection.py", line 360, in write_channel
+    self._write_channel(out_data)
+  File "/home/marcin/.local/lib/python3.6/site-packages/netmiko/base_connection.py", line 331, in _write_channel
+    self.remote_conn.sendall(write_bytes(out_data, encoding=self.encoding))
+  File "/home/marcin/.local/lib/python3.6/site-packages/paramiko/channel.py", line 846, in sendall
+    sent = self.send(s)
+  File "/home/marcin/.local/lib/python3.6/site-packages/paramiko/channel.py", line 801, in send
+    return self._send(s, m)
+  File "/home/marcin/.local/lib/python3.6/site-packages/paramiko/channel.py", line 1180, in _send
+    raise socket.error("Socket is closed")
+OSError: Socket is closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/marcin/.local/lib/python3.6/site-packages/nornir/core/task.py", line 62, in start
+    r = self.task(self, **self.params)
+  File "/home/marcin/.local/lib/python3.6/site-packages/nornir/plugins/tasks/networking/napalm_get.py", line 61, in napalm_get
+    result[g] = method(**options)
+  File "/home/marcin/.local/lib/python3.6/site-packages/napalm/ios/ios.py", line 904, in get_interfaces
+    output = self._send_command(command)
+  File "/home/marcin/.local/lib/python3.6/site-packages/napalm/ios/ios.py", line 168, in _send_command
+    raise ConnectionClosedException(str(e))
+napalm.base.exceptions.ConnectionClosedException: Socket is closed
+
+2019-05-24 13:59:28,049 - nornir.core.task -     INFO -      start() - xrv7: Get interfaces: running task
+2019-05-24 13:59:28,052 - nornir.core.task -     INFO -      start() - vmx1: Get interfaces: running task
+2019-05-24 13:59:28,052 - nornir.core.task -     INFO -      start() - vmx1: Get interfaces: running task
+2019-05-24 13:59:32,784 -     werkzeug -     INFO -       _log() - 192.168.194.37 - - [24/May/2019 13:59:32] "GET / HTTP/1.1" 500 -
+2019-05-24 13:59:32,841 -     werkzeug -     INFO -       _log() - 192.168.194.37 - - [24/May/2019 13:59:32] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2019-05-24 13:59:32,845 -     werkzeug -     INFO -       _log() - 192.168.194.37 - - [24/May/2019 13:59:32] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+2019-05-24 13:59:32,845 -     werkzeug -     INFO -       _log() - 192.168.194.37 - - [24/May/2019 13:59:32] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2019-05-24 13:59:32,973 -     werkzeug -     INFO -       _log() - 192.168.194.37 - - [24/May/2019 13:59:32] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+2019-05-24 13:59:32,984 -     werkzeug -     INFO -       _log() - 192.168.194.37 - - [24/May/2019 13:59:32] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2019-05-24 14:00:04,366 -     werkzeug -     INFO -       _log() -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2019-05-24 14:00:04,368 -     werkzeug -     INFO -       _log() -  * Restarting with stat
+2019-05-24 14:00:05,118 -     werkzeug -  WARNING -       _log() -  * Debugger is active!
+2019-05-24 14:00:05,119 -     werkzeug -     INFO -       _log() -  * Debugger PIN: 901-482-608
+2019-05-24 14:00:11,157 -  nornir.core -     INFO -        run() - Running task 'Get interfaces' with num_workers: 100
+2019-05-24 14:00:11,157 -  nornir.core -     INFO -        run() - Running task 'Get interfaces' with num_workers: 100
+2019-05-24 14:00:11,158 -  nornir.core -    DEBUG -        run() - {'name': 'Get interfaces', 'getters': ['interfaces']}
+2019-05-24 14:00:11,158 -  nornir.core -    DEBUG -        run() - {'name': 'Get interfaces', 'getters': ['interfaces']}
+2019-05-24 14:00:11,182 - nornir.core.task -     INFO -      start() - csr15: Get interfaces: running task
+2019-05-24 14:00:11,183 - nornir.core.task -     INFO -      start() - xrv7: Get interfaces: running task
+2019-05-24 14:00:11,183 - nornir.core.task -     INFO -      start() - xrv7: Get interfaces: running task
+2019-05-24 14:00:11,183 - nornir.core.task -     INFO -      start() - xrv8: Get interfaces: running task
+2019-05-24 14:00:11,183 - nornir.core.task -     INFO -      start() - xrv8: Get interfaces: running task
+2019-05-24 14:00:11,182 - nornir.core.task -     INFO -      start() - csr15: Get interfaces: running task
+2019-05-24 14:00:11,183 - nornir.core.task -     INFO -      start() - vmx1: Get interfaces: running task
+2019-05-24 14:00:11,183 - nornir.core.task -     INFO -      start() - vmx1: Get interfaces: running task
+2019-05-24 14:00:24,572 -     werkzeug -     INFO -       _log() - 192.168.194.37 - - [24/May/2019 14:00:24] "GET / HTTP/1.1" 200 -
+2019-05-24 14:02:38,805 -     werkzeug -     INFO -       _log() -  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+2019-05-24 14:02:38,806 -     werkzeug -     INFO -       _log() -  * Restarting with stat
+2019-05-24 14:02:39,486 -     werkzeug -  WARNING -       _log() -  * Debugger is active!
+2019-05-24 14:02:39,486 -     werkzeug -     INFO -       _log() -  * Debugger PIN: 901-482-608
+2019-05-24 14:02:41,028 -  nornir.core -     INFO -        run() - Running task 'Get interfaces' with num_workers: 100
+2019-05-24 14:02:41,028 -  nornir.core -     INFO -        run() - Running task 'Get interfaces' with num_workers: 100
+2019-05-24 14:02:41,028 -  nornir.core -    DEBUG -        run() - {'name': 'Get interfaces', 'getters': ['interfaces']}
+2019-05-24 14:02:41,028 -  nornir.core -    DEBUG -        run() - {'name': 'Get interfaces', 'getters': ['interfaces']}
+2019-05-24 14:02:41,055 - nornir.core.task -     INFO -      start() - csr15: Get interfaces: running task
+2019-05-24 14:02:41,055 - nornir.core.task -     INFO -      start() - csr15: Get interfaces: running task
+2019-05-24 14:02:41,055 - nornir.core.task -     INFO -      start() - xrv7: Get interfaces: running task
+2019-05-24 14:02:41,055 - nornir.core.task -     INFO -      start() - xrv7: Get interfaces: running task
+2019-05-24 14:02:41,056 - nornir.core.task -     INFO -      start() - xrv8: Get interfaces: running task
+2019-05-24 14:02:41,056 - nornir.core.task -     INFO -      start() - xrv8: Get interfaces: running task
+2019-05-24 14:02:41,056 - nornir.core.task -     INFO -      start() - vmx1: Get interfaces: running task
+2019-05-24 14:02:41,056 - nornir.core.task -     INFO -      start() - vmx1: Get interfaces: running task
+2019-05-24 14:02:54,942 -     werkzeug -     INFO -       _log() - 192.168.194.37 - - [24/May/2019 14:02:54] "GET / HTTP/1.1" 200 -
